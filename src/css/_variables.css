@@ -1,0 +1,16 @@
+:root {
+    --primary: #c3ff00bb;
+    --secondary: #000;
+    --text-color: #777;
+    --regular-text-color: #aaa;
+    --body-background: #111;
+    --border-color: #777;
+}
+:root.light-theme {
+    --primary: #313c0e;
+    --secondary: #fff;
+    --text-color: #333;
+    --regular-text-color: #555;
+    --body-background: #f9f9f9;
+    --border-color: #777;
+}
