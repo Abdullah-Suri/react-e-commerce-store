@@ -1,21 +1,8 @@
-# E-Commerce Store
-E-Commerce Store on react to gain expereince in react
+# React + Vite
 
-## How To Use
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-To clone and run this application, you'll need Git and Node.js (which comes With npm) installed on your computer.
-from your command line:
-```
-# clone this repository
-$ git clone https://github.com/Abdullah-Suri/AbdullahSuri.git
+Currently, two official plugins are available:
 
-# Go into the repository
-$ cd AbdullahSuri
-
-# install dependencies
-$ npm install
-
-# Run the app
-$ npm run dev
-
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
