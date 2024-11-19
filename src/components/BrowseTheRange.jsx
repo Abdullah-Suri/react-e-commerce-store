@@ -20,7 +20,7 @@ const BrowseTheRange = () => {
         <div className='flex items-center justify-center'>
             {categories.map((catgory, index) => (
                 <div className='mr-5 relative group cursor-pointer' key={index}>
-                    <Link to={catgory.link} className='absolute inset-0'></Link>
+                    <Link to={catgory.link} className='absolute inset-0 z-1'></Link>
                     <div className='overflow-hidden rounded-xl'> <img src={catgory.src} className='group-hover:scale-110 transition-all duration-500' alt="" /></div>
                     <div className='text-xl font-semibold mt-5'>{catgory.lable}</div>
                 </div>

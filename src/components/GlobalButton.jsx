@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const GlobalButton = ({ onClick, label, link = '/', customeStyle = {}, customClasses = ''}) => {
+const GlobalButton = ({ onClick, label, link = '/', customStyle = {}, customClasses = ''}) => {
     const baseStyle = {
         backgroundColor: 'var(--primary)',
         padding: '15px 72px',
@@ -12,12 +12,12 @@ const GlobalButton = ({ onClick, label, link = '/', customeStyle = {}, customCla
 
     const styleVariants = {
         ...baseStyle,
-        ...customeStyle
+        ...customStyle
     };
 
     return (
         <div className='h-fit'>
-            <Link to={link} style={styleVariants} className={`transition-all duration-300 ${customClasses} hover:!bg-transparent !border hover:!border-primary hover:!text-primary`}> {label}</Link>
+            <Link to={link} style={styleVariants} className={`transition-all duration-300 ${customClasses} hover:!bg-secondary !border hover:!border-primary hover:!text-primary`}> {label}</Link>
         </div>
   )
 }
