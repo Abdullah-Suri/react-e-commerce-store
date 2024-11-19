@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ProdImg1 from '@/assets/img/image-3.png'
-import ProdImg2 from '@/assets/img/image-6.png'
 import ProdImg3 from '@/assets/img/image-8.png'
-import ProdImg4 from '@/assets/img/images-1.png'
+import ProdImg2 from '@/assets/img/image-6.png'
+import ProdImg4 from '@/assets/img/image-3.png'
+// import ProdImg4 from '@/assets/img/images-1.png'
 import ProdImg5 from '@/assets/img/images.png'
 import GlobalButton from '@/components/GlobalButton'
 
