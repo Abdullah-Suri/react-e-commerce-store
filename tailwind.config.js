@@ -12,7 +12,8 @@ export default {
         "primary": 'var(--primary)',
         "secondary": 'var(--secondary)',
         "text-color": 'var(--text-color)',
-        "regular-text-color": 'var(--regular-text-color)',
+        "paragraph-color": 'var(--paragraph-color)',
+        "custom-cream": 'var(--custom-cream)',
       },
       // screens: {
       //   'mini': '393px',
@@ -25,11 +26,9 @@ export default {
         center: true,
         padding: '20px',
         screens: {
-          'mini': '450px',
-          'sm': '640px',
-          'md': '768px',
           'lg': '1024px',
-          'xl': '1536px',
+          'xl': '1280px',
+          '2xl': '1536px',
         },
       },
     },

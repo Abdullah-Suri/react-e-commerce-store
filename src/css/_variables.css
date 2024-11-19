@@ -1,7 +1,9 @@
 :root {
-    --primary: #c3ff00bb;
-    --secondary: #000;
-    --text-color: #777;
+    --primary: #B88E2F;
+    --secondary: #F9F1E7;
+    --custom-cream: #FAF3EA;
+    --text-color: #242424;
+    --paragraph-color: #666666;
     --regular-text-color: #aaa;
     --body-background: #111;
     --border-color: #777;

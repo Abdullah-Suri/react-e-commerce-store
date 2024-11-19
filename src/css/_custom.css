@@ -2,4 +2,12 @@
 body, html {
     font-family: "Poppins", sans-serif;
     background-color: #F5F5F5;
+    color: var(--text-color);
+}
+.hero-banner-background {
+    height: 100%;
+    width: 100%;
+    background-image: url('@/assets/img/hero-banner.png');
+    object-fit: contain;
+    /* background-repeat: no-repeat; */
 }
