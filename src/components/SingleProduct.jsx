@@ -9,6 +9,8 @@ import Gallery1 from '@/assets/img/gallery1.png'
 import Gallery2 from '@/assets/img/gallery2.png'
 import Gallery3 from '@/assets/img/gallery3.png'
 import Gallery4 from '@/assets/img/gallery4.png'
+import Detail1 from '@/assets/img/detail1.png'
+import Detail2 from '@/assets/img/detail2.png'
 import Hero from '@/assets/img/shophero.png'
 import ProdImg5 from '@/assets/img/image-3.png'
 // import ProdImg4 from '@/assets/img/images-1.png'
@@ -21,10 +23,6 @@ function SingleProduct() {
         { src: ProdImg2, title: `Leviosa`, desc: 'Stylish cafe chair', salePrice: 'Rp 2.500.000', defaultPrice: '', link: '/women-clothing' },
         { src: ProdImg3, title: `Lolito`, desc: 'Luxury big sofa', salePrice: 'Rp 7.000.000', defaultPrice: 'Rp 14.000.000', link: '/jewelery' },
         { src: ProdImg4, title: `Respira`, desc: 'Outdoor bar table and stool', salePrice: 'Rp 500.000', defaultPrice: '', link: '/jewelery' },
-        { src: ProdImg5, title: `Grifo`, desc: 'Night lamp', salePrice: 'Rp 500.000', defaultPrice: '', link: '/jewelery' },
-        { src: ProdImg1, title: `Muggo`, desc: 'Small mug', salePrice: 'Rp 1.500.000', defaultPrice: '', link: '/jewelery' },
-        { src: ProdImg2, title: `Pingky`, desc: 'Cute bed set', salePrice: 'Rp 150.000', defaultPrice: 'Rp 14.000.000', link: '/jewelery' },
-        { src: ProdImg3, title: `Potty`, desc: 'Minimalist flower pot', salePrice: 'Rp 7.000.000', defaultPrice: '', link: '/jewelery' },
     ]
     return (
         <div>
@@ -62,7 +60,7 @@ function SingleProduct() {
                     </div>
                 </div>
             </div>
-            <section className="text-gray-600 body-font overflow-hidden">
+            <section className="text-gray-600 body-font overflow-hidden border-b">
                 <div className="container px-5 py-32 mx-auto">
                     <div className="w-full mx-auto flex gap-4">
                         <div className=''>
@@ -202,6 +200,56 @@ function SingleProduct() {
                         </div>
                     </div>
                 </div>
+            </section>
+            <section className=' border-b '>
+                <div className='container flex justify-center gap-[52px] pt-[48px]'>
+                    <h2 className='text-black'>Description</h2>
+                    <h2 className='text-footer-xt'>Additional Information</h2>
+                    <h2 className='text-footer-xt'>Reviews [5]</h2>
+                </div>
+                <div className='max-w-[1026px] container mx-auto'>
+                    <p className='text-left pt-[37px] text-footer-xt'>
+                        Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.
+                    </p>
+                    <p className='text-left pt-[30px] text-footer-xt pb-[36px]'>
+                        Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.
+                    </p>
+                </div>
+                <div className='container flex gap-[29px] justify-center pb-[65px]'>
+                    <img src={Detail1} alt="" />
+                    <img src={Detail2} alt="" />
+                </div>
+            </section>
+            <section className='container'>
+                <h2 className='text-[36px] font-semibold text-center pt-[55px]'>Related Products</h2>
+                <div className='container py-14'>
+                    <div className='flex items-center justify-center text-start flex-wrap gap-5'>
+                        {products.map((product, index) => (
+                            <div key={index} className='w-[23%] relative group cursor-pointer'>
+                                <div className='invisible group-hover:visible absolute inset-0 bg-black/40 flex items-center justify-center rounded-lg'>
+                                    <GlobalButton label={'Add to Cart'} link={'/shop'} customClasses={'!bg-primary !border-primary !hover:bg-white rounded-md'} />
+                                </div>
+                                <div className='overflow-hidden rounded-t-xl'>
+                                    <img src={product.src} alt="" className='w-full h-full' />
+                                </div>
+                                <div className='bg-[#F4F5F7] py-3.5 px-2'>
+                                    <h4 className='text-lg font-semibold text-text-color'>{product.title}</h4>
+                                    <p className='text-paragraph-color text-sm my-1.5'>{product.desc}</p>
+                                    <div className='flex items-center'>
+                                        <span className='text-sm mr-1.5'>{product.salePrice}</span>
+                                        <span className='text-paragraph-color line-through text-xs'>{product.defaultPrice}</span>
+                                    </div>
+                                </div>
+                                <div className='text-xl font-semibold mt-5'>{ }</div>
+                                {/* <Link to={'/'} className='absolute inset-0 z-1'></Link> */}
+                            </div>
+                        ))}
+                    </div>
+                    <div className='flex justify-center'>
+                        <button className='w-[245px] font-semibold text-page-active border border-page-active h-[48px]'>Show More</button>
+                    </div>
+                </div>
+
             </section>
         </div>
     )
