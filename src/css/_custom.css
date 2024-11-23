@@ -11,3 +11,14 @@ body, html {
     object-fit: contain;
     /* background-repeat: no-repeat; */
 }
+
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* backdrop-filter: blur(5px); */
+    background: #00000033; /* Optional dark overlay */
+    z-index: 5; /* Higher than normal content but lower than the cart dropdown */
+  }
