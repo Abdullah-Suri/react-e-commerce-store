@@ -14,6 +14,12 @@ export default {
         "text-color": 'var(--text-color)',
         "paragraph-color": 'var(--paragraph-color)',
         "custom-cream": 'var(--custom-cream)',
+        "footer-xt": 'var(--footer-xt)',
+        "pagination-color":'var(--pagination-color)',
+        "page-active":'var(--page-active)',
+        "not-active":'var(--not-active)',
+        "features":'var(--features)',
+        "quality":'var(--quality)',
       },
       // screens: {
       //   'mini': '393px',

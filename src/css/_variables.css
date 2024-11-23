@@ -7,6 +7,12 @@
     --regular-text-color: #aaa;
     --body-background: #111;
     --border-color: #777;
+    --footer-xt:#9F9F9F;
+    --pagination-color:#F9F1E7;
+    --page-active:#B88E2F;
+    --not-active: #F9F1E7;
+    --features: #FAF3EA;
+    --quality: #898989;
 }
 :root.light-theme {
     --primary: #313c0e;
