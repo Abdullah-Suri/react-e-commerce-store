@@ -6,10 +6,11 @@ import WhishListIcon from '@/assets/svg/wishlist-icon.svg'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Cart from './Cart';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const selector = useSelector(state => state.cart.cart)
   const toggleCart = () => {
     setIsOpen((prev) => !prev);
   };
@@ -44,12 +45,15 @@ const Header = () => {
 
       <div className='flex items-center'>
         <img src={WhishListIcon} className='mr-[25px]' alt="Cart Icon" />
-        <button onClick={toggleCart} className="cart-button">
-        <img src={CartIcon} alt="Cart Icon" />
-      </button>
+        <div className='relative flex items-center'>
+          <span className='size-5 rounded-full flex items-center justify-center text-[10px] text-white bg-red-600 absolute bottom-2 -right-3'>{selector?.length}</span>
+          <button onClick={toggleCart} className="cart-button">
+            <img src={CartIcon} alt="Cart Icon" />
+          </button>
+        </div>
 
         {/* Render the CartDropdown Component */}
-        <Cart isOpen={isOpen}   onClose={closeCart}/>
+        <Cart isOpen={isOpen}  onClose={closeCart}/>
         {isOpen && <div className="blur-background" onClick={closeCart}></div>}
       </div>
     </div>

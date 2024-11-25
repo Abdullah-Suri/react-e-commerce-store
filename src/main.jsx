@@ -1,10 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import './css/style.css';
+import '@/css/style.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from './Layout.jsx';
-import Home from './pages/Home.jsx';
-import Shop from './components/Shop.jsx';
-import SingleProduct from './components/SingleProduct.jsx';
+import Layout from '@/Layout.jsx';
+import Home from '@/pages/Home.jsx';
+import Shop from '@/components/Shop.jsx';
+import SingleProduct from '@/components/SingleProduct.jsx';
+import { Provider } from 'react-redux';
+import store from './config/store/store';
 import MainCart from './components/MainCart.jsx';
 import CheckOut from './components/CheckOut.jsx';
 
@@ -51,5 +53,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 )
