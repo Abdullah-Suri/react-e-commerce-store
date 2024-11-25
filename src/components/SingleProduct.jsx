@@ -1,20 +1,15 @@
 import React from 'react'
-import productBg from '@/assets/img/productBg.png'
 import ProdImg1 from '@/assets/img/image-3.png'
 import ProdImg3 from '@/assets/img/image-8.png'
 import ProdImg2 from '@/assets/img/image-6.png'
 import ProdImg4 from '@/assets/img/image-3.png'
-import Single from '@/assets/img/SingleProduct.png'
+import ProductImg from '@/assets/img/product-img.png'
 import Gallery1 from '@/assets/img/gallery1.png'
 import Gallery2 from '@/assets/img/gallery2.png'
 import Gallery3 from '@/assets/img/gallery3.png'
 import Gallery4 from '@/assets/img/gallery4.png'
 import Detail1 from '@/assets/img/detail1.png'
 import Detail2 from '@/assets/img/detail2.png'
-import Hero from '@/assets/img/shophero.png'
-import ProdImg5 from '@/assets/img/image-3.png'
-// import ProdImg4 from '@/assets/img/images-1.png'
-// import ProdImg5 from '@/assets/img/Images.png'
 import GlobalButton from '@/components/GlobalButton'
 function SingleProduct() {
 
@@ -72,7 +67,7 @@ function SingleProduct() {
                         <img
                             alt="ecommerce"
                             className="lg:w-1/2 w-full max-h-[590px] object-cover bg-[#F9F1E7] rounded-[10px] object-center"
-                            src={Single}
+                            src={ProductImg}
                         />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">

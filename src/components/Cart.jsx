@@ -5,7 +5,7 @@ function Cart({ isOpen, onClose }) {
     if (!isOpen) return null;
 
     return (
-        <div className="cart-dropdown absolute right-0 top-0 h-[746px] mt-3 bg-white border border-gray-200 shadow-lg rounded-md w-[417px] p-4 z-10">
+        <div className="cart-dropdown absolute right-0 top-0 h-[746px] mt-3  bg-white border border-gray-200 shadow-lg rounded-md w-[417px] p-4 z-10">
             <div className='flex items-center justify-between border-b pb-[26px]'>
                 <h3 className="font-semibold text-2xl ">Shopping Cart</h3>
 
