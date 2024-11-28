@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ProdImg1 from '@/assets/img/image-3.png'
 import ProdImg3 from '@/assets/img/image-8.png'
 import ProdImg2 from '@/assets/img/image-6.png'
@@ -11,14 +11,40 @@ import Gallery4 from '@/assets/img/gallery4.png'
 import Detail1 from '@/assets/img/detail1.png'
 import Detail2 from '@/assets/img/detail2.png'
 import GlobalButton from '@/components/GlobalButton'
-function SingleProduct() {
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllproduct } from '../config/store/reducers/productSlice'
 
+function SingleProduct() {
+    const { id } = useParams();
+    const [isSingleProduct, setSingleProduct] = useState();
+    const [isOpen, setIsOpen] = useState(true);
     const products = [
         { src: ProdImg1, title: `Syltherine`, desc: 'Stylish cafe chair', salePrice: 'Rp 2.500.000', defaultPrice: 'Rp 3.500.000', link: '/men-clothing' },
         { src: ProdImg2, title: `Leviosa`, desc: 'Stylish cafe chair', salePrice: 'Rp 2.500.000', defaultPrice: '', link: '/women-clothing' },
         { src: ProdImg3, title: `Lolito`, desc: 'Luxury big sofa', salePrice: 'Rp 7.000.000', defaultPrice: 'Rp 14.000.000', link: '/jewelery' },
         { src: ProdImg4, title: `Respira`, desc: 'Outdoor bar table and stool', salePrice: 'Rp 500.000', defaultPrice: '', link: '/jewelery' },
     ]
+
+    async function getSingleProduct(params) {
+        try {
+            const response = await fetch(`https://dummyjson.com/products/${id}`);
+            const data = await response.json();
+            setSingleProduct(data)
+            console.log('-->', data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const toggleAccordion = (value) => {
+        setIsOpen(value)
+    }
+
+    useEffect(() => {
+        getSingleProduct()
+    }, [])
+
     return (
         <div>
             <div className='py-3 bg-pagination-color'>
@@ -39,44 +65,32 @@ function SingleProduct() {
                         Asgaard sofa
 
                     </div>
-                    <div className='flex gap-6'>
-                        <div>
-                            <label className='pr-4'>
-                                Show
-                            </label>
-                            <input type="text" className='p-4 w-[55px] outline-none' name="" id="" placeholder='16' />
-                        </div>
-                        <div>
-                            <label className='pr-4'>
-                                Short by
-                            </label>
-                            <input type="text" className='p-4 w-[188px] outline-none' name="" id="" placeholder='Default' />
-                        </div>
-                    </div>
                 </div>
             </div>
             <section className="text-gray-600 body-font overflow-hidden border-b">
                 <div className="container px-5 py-32 mx-auto">
                     <div className="w-full mx-auto flex gap-4">
                         <div className=''>
-                            <img src={Gallery1} className='mb-8' alt="" />
-                            <img src={Gallery2} className='mb-8' alt="" />
-                            <img src={Gallery3} className='mb-8' alt="" />
-                            <img src={Gallery4} className='mb-8' alt="" />
+                            {isSingleProduct?.images?.map((item, index) => (
+                                <div key={index} className='bg-secondary rounded-md border h-fit mb-8'>
+                                    <img src={item} className='size-20' alt="" />
+                                </div>
+                            ))}
                         </div>
                         <img
                             alt="ecommerce"
                             className="lg:w-1/2 w-full max-h-[590px] object-cover bg-[#F9F1E7] rounded-[10px] object-center"
-                            src={ProductImg}
+                            src={isSingleProduct?.thumbnail}
                         />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                                Asgaard sofa
+                                {isSingleProduct?.title}
                             </h1>
-                            <span className="title-font font-medium text-2xl text-footer-xt">
-                                Rs. 250,000.00
-                                {/* {products.price} */}
-                            </span>
+                            <div className='flex items-center gap-2.5'>
+                                <span className="text-primary title-font font-medium text-2xl">${isSingleProduct?.price}</span>
+                                <span className='text-footer-xt line-through'>${(isSingleProduct?.price + isSingleProduct?.discountPercentage)?.toFixed(2)}</span>
+
+                            </div>
                             <div className="flex mb-4">
                                 <span className="flex items-center">
                                     <svg
@@ -137,13 +151,11 @@ function SingleProduct() {
 
                                 </span>
                                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                                    <span className="text-footer-xt ml-3">4 Reviews</span>
+                                    <span className="text-footer-xt ml-3">{isSingleProduct?.rating} Rating</span>
                                 </span>
                             </div>
                             <p className="leading-relaxed mb-5 pb-5 text-black">
-                                Setting the bar as one of the loudest speakers in its class, <br /> the Kilburn is a compact, stout-hearted hero with a well-balanced <br /> audio which boasts a clear midrange and extended highs <br /> for a sound.
-
-                                {/* {products.description} */}
+                                {isSingleProduct?.description}
                             </p>
                             <div className="leading-relaxed mb-5 pb-2 ">
                                 <p className='text-footer-xt'>Size</p>
@@ -175,9 +187,13 @@ function SingleProduct() {
                                 </button>
                             </div>
                             <div className='border-t mt-14 pt-10 text-footer-xt'>
-                                <div className='flex pb-[12px]'><p className='w-[92px]'>SKU</p>:<p className='ml-[12px]'>SS001</p></div>
-                                <div className='flex pb-[12px]'><p className='w-[92px]'>Category</p>:<p className='ml-[12px]'>Sofas</p></div>
-                                <div className='flex pb-[12px]'><p className='w-[92px]'>Tags</p>:<p className='ml-[12px]'>Sofa, Chair, Home, Shop</p></div>
+                                <div className='flex pb-[12px]'><p className='w-[92px]'>SKU</p>:<p className='ml-[12px]'>{isSingleProduct?.sku}</p></div>
+                                <div className='flex pb-[12px]'><p className='w-[92px]'>Category</p>:<p className='ml-[12px]'>{isSingleProduct?.category}</p></div>
+                                <div className='flex pb-[12px]'><p className='w-[92px]'>Tags</p>:
+                                    <p className='ml-[12px]'>
+                                        <span >{isSingleProduct?.tags.join(', ')}</span>
+                                    </p>
+                                </div>
                                 <div className='flex pb-[12px]'><p className='w-[92px]'>Share</p>:<p className='ml-[12px] flex gap-6'>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" clipRule="evenodd" d="M0 10.0558C0 15.0275 3.61083 19.1617 8.33333 20V12.7775H5.83333V10H8.33333V7.7775C8.33333 5.2775 9.94417 3.88917 12.2225 3.88917C12.9442 3.88917 13.7225 4 14.4442 4.11083V6.66667H13.1667C11.9442 6.66667 11.6667 7.2775 11.6667 8.05583V10H14.3333L13.8892 12.7775H11.6667V20C16.3892 19.1617 20 15.0283 20 10.0558C20 4.525 15.5 0 10 0C4.5 0 0 4.525 0 10.0558Z" fill="black" />
@@ -198,22 +214,87 @@ function SingleProduct() {
             </section>
             <section className=' border-b '>
                 <div className='container flex justify-center gap-[52px] pt-[48px]'>
-                    <h2 className='text-black'>Description</h2>
-                    <h2 className='text-footer-xt'>Additional Information</h2>
-                    <h2 className='text-footer-xt'>Reviews [5]</h2>
+                    <h2 onClick={() => { toggleAccordion(true) }} className='text-black'>Description</h2>
+                    <h2 onClick={() => { toggleAccordion(false) }} className='text-footer-xt'>Reviews [{isSingleProduct?.reviews.length}]</h2>
                 </div>
-                <div className='max-w-[1026px] container mx-auto'>
-                    <p className='text-left pt-[37px] text-footer-xt'>
-                        Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.
-                    </p>
-                    <p className='text-left pt-[30px] text-footer-xt pb-[36px]'>
-                        Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.
-                    </p>
-                </div>
-                <div className='container flex gap-[29px] justify-center pb-[65px]'>
-                    <img src={Detail1} alt="" />
-                    <img src={Detail2} alt="" />
-                </div>
+                {isOpen ? (
+                    <div className='max-w-[1026px] container mx-auto'>
+                        <p className='text-left py-[37px] text-footer-xt'>{isSingleProduct?.description}</p>
+                    </div>
+                ) :
+                    (
+                        <div className='container flex gap-[29px] justify-center py-[65px]'>
+                            {isSingleProduct?.reviews.map((item, index) => (
+                                <div key={index} className='w-[25%] border rounded-xl bg-secondary p-4'>
+                                    <h4 className='font-semibold'>{item?.reviewerName}</h4>
+                                    <div className='flex items-center'>
+                                        <svg
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            className="w-4 h-4 text-[#FFC700]"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        <svg
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            className="w-4 h-4 text-[#FFC700]"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        <svg
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            className="w-4 h-4 text-[#FFC700]"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        <svg
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            className="w-4 h-4 text-[#FFC700]"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        <svg
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            className="w-4 h-4 text-[#FFC700]"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                    </div>
+                                    <p>{item?.comment}</p>
+                                    <div className='border-t'>
+                                        {item?.date.toDateString()}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )
+
+                }
+                
             </section>
             <section className='container'>
                 <h2 className='text-[36px] font-semibold text-center pt-[55px]'>Related Products</h2>

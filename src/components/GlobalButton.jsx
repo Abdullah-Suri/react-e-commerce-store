@@ -17,7 +17,7 @@ const GlobalButton = ({ onClick, label, link = '/', customStyle = {}, customClas
 
     return (
         <div className='h-fit'>
-            <Link to={link} style={styleVariants} className={`transition-all duration-300 ${customClasses} hover:!bg-secondary !border hover:!border-primary hover:!text-primary`}> {label}</Link>
+            <Link to={link} style={styleVariants} className={`rounded-md transition-all duration-300 ${customClasses} hover:!bg-secondary !border hover:!border-primary hover:!text-primary`}> {label}</Link>
         </div>
   )
 }

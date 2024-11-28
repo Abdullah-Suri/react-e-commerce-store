@@ -31,16 +31,16 @@ const Header = () => {
 
   return (
     <div className='container flex items-center justify-between py-7'>
-      <div className='flex items-center'>
-        <img src={Logo} alt="Furniro Logo" />
-        <span className='text-[32px] font-bold'>Furniro</span>
-      </div>
+        <Link to={'/'} className='flex items-center gap-1.5'>
+          <img src={Logo} alt="Furniro Logo" />
+          <span className='text-[32px] font-bold'>Furniro</span>
+        </Link>
 
       <nav className='flex items-center'>
-        <Link to="/" className='mr-[52px]'>Home</Link>
-        <Link to="/shop" className='mr-[52px]'>Shop</Link>
-        <Link to="/about-us" className='mr-[52px]'>About</Link>
-        <Link to="/contact-us" className='mr-[52px]'>Contact</Link>
+        <Link to="/" className='mr-[52px] relative before:bg-black before:h-[1px] before:absolute before:w-0 before:left-0 before:bottom-0 hover:before:w-full before:transition-all duration-200'>Home</Link>
+        <Link to="/shop" className='mr-[52px] relative before:bg-black before:h-[1px] before:absolute before:w-0 before:left-0 before:bottom-0 hover:before:w-full before:transition-all duration-200'>Shop</Link>
+        <Link to="/about-us" className='mr-[52px] relative before:bg-black before:h-[1px] before:absolute before:w-0 before:left-0 before:bottom-0 hover:before:w-full before:transition-all duration-200'>About</Link>
+        <Link to="/contact-us" className='mr-[52px] relative before:bg-black before:h-[1px] before:absolute before:w-0 before:left-0 before:bottom-0 hover:before:w-full before:transition-all duration-200'>Contact</Link>
       </nav>
 
       <div className='flex items-center'>
